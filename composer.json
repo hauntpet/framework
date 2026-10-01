@@ -1,0 +1,60 @@
+{
+    "name": "haunt/framework",
+    "description": "The main framework for Haunt.",
+    "version": "dev-main",
+    "authors": [
+        {
+            "name": "crotanite",
+            "email": "crotanite@lumitestudios.com"
+        }
+    ],
+    "require": {
+        "php": "^8.0",
+        "lumite-studios/common": "dev-main",
+        "livewire/livewire": "^4.4"
+    },
+    "require-dev": {
+        "laravel/pint": "^1.0",
+        "pestphp/pest": "^4.0",
+        "orchestra/testbench": "^11.0",
+        "pestphp/pest-plugin-laravel": "^4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Haunt\\Framework\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Haunt\\Framework\\Tests\\": "tests/",
+            "Haunt\\Framework\\Factories\\": "database/factories/"
+        }
+    },
+    "extra": {
+        "haunt": {
+            "name": "Haunt: Framework",
+            "plugin": "\\Haunt\\Framework\\FrameworkPlugin"
+        },
+        "laravel": {
+            "providers": [
+                "Haunt\\Framework\\FrameworkServiceProvider"
+            ]
+        }
+    },
+    "scripts": {
+        "test": [
+            "@putenv XDEBUG_MODE=develop",
+            "pest"
+        ],
+        "pint": [
+            "pint"
+        ]
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
