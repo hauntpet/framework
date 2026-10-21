@@ -1,8 +1,10 @@
 <?php
 
+use Haunt\Framework\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
-use Haunt\Framework\Http\Middleware\IsInstalledMiddleware;
 
-Route::livewire('/install', 'haunt-framework::install.install')
-    ->middleware(['web'])
-    ->withoutMiddleware([IsInstalledMiddleware::class]);
+// Route::prefix(config('haunt.admin_prefix'))->group(function () {
+//     Route::get('/', function () { dd('test'); });
+// });
+
+// Route::fallback(PageController::class);

@@ -8,6 +8,12 @@ use Illuminate\Support\Collection;
 
 class Manifest extends PackageManifest
 {
+    public function plugin(string $plugin)
+    {
+        return $this->plugins()
+            ->get($plugin);
+    }
+
     public function plugins()
     {
         return collect($this->getManifest());
@@ -23,7 +29,8 @@ class Manifest extends PackageManifest
         }
 
         $output = collect($packages)
-            ->filter(fn ($p) => Arr::has($p, 'extra.haunt') || $p['name'] === 'haunt/framework')
+            // ->filter(fn ($p) => Arr::has($p, 'extra.haunt') || $p['name'] === 'haunt/framework')
+            ->filter(fn ($p) => Arr::has($p, 'extra.haunt'))
             ->keyBy('name');
 
         $output = $output->map(fn ($p) => $this->formatPackage($p, $output))
